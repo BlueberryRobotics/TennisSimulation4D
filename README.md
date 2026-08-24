@@ -64,7 +64,7 @@ As a result:
 
 ## Project Components
 
-### TennisSimulation4D
+### Trajectory4D
 
 Core simulation engine.
 
@@ -75,6 +75,14 @@ Responsibilities include:
 - Trajectory evaluation
 - Result generation
 - Evolutionary self-play
+
+### IterativeSimulation
+
+Simulations are generation based, and each new generation is based on the previous generation, and a file called the reference file is loaded into memory to guide the selection of trajectories to be simulated during each generation. A new reference file is created at the completion of each new generation and the reference file is smaller version that combines multiple shots with the same "context" into a single row with accumulating statistics. 
+
+Generation size is configurable, but the default is 5 million points. A point tends to average about 5 shots which results in an approximate total of 25 million shots each of which is a row in the generation file. 
+
+The generation files accumulate in the IterativeSimulation folder, which also contains scripts for analyzing the results. 
 
 ### TrajectoryGenerator
 - Generates the library of physically accurate trajectories used by the simulation
